@@ -359,4 +359,8 @@
     border-bottom: solid 1px #eee;
   }
 
+  .item input[type=checkbox]{
+      margin-right: 10px;
+  }
+
   
