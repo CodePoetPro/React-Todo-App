@@ -5,7 +5,7 @@ import './App.css'
 
 class App extends Component {
 
-  markCompleted = (id) => {
+  toggleComplete = (id) => {
     this.setState({
       todos: this.state.todos.map((todo) => {
         if (todo.id === id) {
@@ -39,7 +39,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Todos markCompleted={this.markCompleted} todos={this.state.todos} />
+        <Todos toggleComplete={this.toggleComplete} todos={this.state.todos} />
       </div>
     );
   }
