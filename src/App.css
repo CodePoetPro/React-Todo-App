@@ -351,6 +351,20 @@
 
 /*! end of normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
 
+h1, h2, h3, h3, h4, h5, h6 {
+  margin: 0px;
+}
+
+header{
+  display: flex;
+  height: 50px;
+  width: 100%;
+  background: black;
+  color: white;
+  align-items: center;
+  padding: 0 20px;
+}
+
 
 
 
