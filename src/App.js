@@ -35,7 +35,7 @@ class App extends Component {
   }
 
   deleteTodo = (id) => {
-    Axios.delete(`https://jsonplaceholder.typicode.com/todos${id}`)
+    Axios.delete(`https://jsonplaceholder.typicode.com/todos/${id}`)
       .then(res=>{
         this.setState({
           todos: this.state.todos.filter((todo) => {
