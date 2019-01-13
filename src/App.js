@@ -16,6 +16,14 @@ class App extends Component {
     });
   }
 
+  deleteTodo = (id) =>{
+    this.setState({
+      todos: this.state.todos.filter((todo)=>{
+        return todo.id !== id;
+      })
+    })
+  }
+
   state = {
     todos: [
       {
@@ -39,7 +47,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Todos toggleComplete={this.toggleComplete} todos={this.state.todos} />
+        <Todos toggleComplete={this.toggleComplete} deleteTodo={this.deleteTodo}  todos={this.state.todos} />
       </div>
     );
   }

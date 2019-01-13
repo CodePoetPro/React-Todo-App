@@ -11,6 +11,7 @@
  html {
     line-height: 1.15; /* 1 */
     -webkit-text-size-adjust: 100%; /* 2 */
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   }
   
   /* Sections
@@ -354,9 +355,18 @@
 
 
   .item{
+    display: flex;
     background-color: #F4F4F4;
     padding : 10px 20px;
     border-bottom: solid 1px #eee;
+    justify-content: space-between;
+  }
+
+  .item button{
+    background: red;
+    color: white;
+    border: none;
+    border-radius: 50%;
   }
 
   .item input[type=checkbox]{
