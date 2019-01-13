@@ -30,6 +30,4 @@ TodoItem.propTypes = {
 }
 
 //Style
-
-
 export default TodoItem

@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
-import './App.css'
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import uuid from 'uuid'
+import './App.css';
 import Header from './components/Header';
 import Todos from './components/Todo';
 import AddTodo from './components/AddTodo';
-import uuid from 'uuid'
+import About from './components/pages/About';
 
 
 class App extends Component {
@@ -19,22 +21,22 @@ class App extends Component {
     });
   }
 
-  deleteTodo = (id) =>{
+  deleteTodo = (id) => {
     this.setState({
-      todos: this.state.todos.filter((todo)=>{
+      todos: this.state.todos.filter((todo) => {
         return todo.id !== id;
       })
     })
   }
 
-  addTodo = (title)=>{
+  addTodo = (title) => {
     let todo = {
-      id : uuid.v4(),
+      id: uuid.v4(),
       title,
-      completed : false
+      completed: false
     }
     this.setState({
-      todos : [
+      todos: [
         ...this.state.todos, todo
       ]
     })
@@ -62,11 +64,19 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        <Header/>
-        <AddTodo addTodo={this.addTodo}/>
-        <Todos toggleComplete={this.toggleComplete} deleteTodo={this.deleteTodo}  todos={this.state.todos} />
-      </div>
+      <Router>
+        <div className="App">
+          <Header />
+          <Route exact path="/" render={props => (
+            <React.Fragment>
+              <AddTodo addTodo={this.addTodo} />
+              <Todos toggleComplete={this.toggleComplete} deleteTodo={this.deleteTodo} todos={this.state.todos} />
+            </React.Fragment>
+          )} />
+          <Route path="/about" component={About}/>
+        </div>
+      </Router>
+
     );
   }
 }
