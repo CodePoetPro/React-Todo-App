@@ -397,6 +397,10 @@ header a{
     width: 21px;
   }
 
+  input[type=text]{
+    border: none;
+  }
+
   .item input[type=checkbox]{
       margin-right: 10px;
   }
