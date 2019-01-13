@@ -18,7 +18,7 @@ export class TodoItem extends Component {
           <input type="checkbox" onChange={this.props.toggleComplete.bind(this, id)} />
           <span style={this.getStyle()} className="item-title">{title}</span>
         </div>
-        <button onClick={this.props.deleteTodo.bind(this,id)}> x </button>
+        <button onClick={this.props.deleteTodo.bind(this, id)}> x </button>
       </div>
     )
   }
@@ -26,8 +26,9 @@ export class TodoItem extends Component {
 
 //PropTypes
 TodoItem.propTypes = {
-  todo: PropTypes.object.isRequired
+  todo: PropTypes.array.isRequired,
+  toggleComplete: PropTypes.func.isRequired,
+  deleteTodo: PropTypes.func.isRequired
 }
 
-//Style
 export default TodoItem

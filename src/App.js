@@ -35,11 +35,14 @@ class App extends Component {
   }
 
   deleteTodo = (id) => {
-    this.setState({
-      todos: this.state.todos.filter((todo) => {
-        return todo.id !== id;
-      })
-    })
+    Axios.delete(`https://jsonplaceholder.typicode.com/todos${id}`)
+      .then(res=>{
+        this.setState({
+          todos: this.state.todos.filter((todo) => {
+            return todo.id !== id;
+          })
+        })
+      })    
   }
 
   addTodo = (title) => {
