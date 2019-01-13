@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import uuid from 'uuid'
 import './App.css';
 import Header from './components/Header';
 import Todos from './components/Todo';
@@ -10,6 +9,19 @@ import Axios from 'axios';
 
 
 class App extends Component {
+
+  state = {
+    todos: []
+  }
+
+  componentDidMount(){
+    Axios.get('https://jsonplaceholder.typicode.com/todos?_limit=10')
+      .then(res=>{
+        this.setState({
+          todos : [...res.data]
+        })
+      })
+  }
 
   toggleComplete = (id) => {
     this.setState({
@@ -31,27 +43,16 @@ class App extends Component {
   }
 
   addTodo = (title) => {
-    let todo = {
-      id: uuid.v4(),
+    const newTodo = {
       title,
       completed: false
     }
-    this.setState({
-      todos: [
-        ...this.state.todos, todo
-      ]
-    })
-  }
-
-  state = {
-    todos: []
-  }
-
-  componentDidMount(){
-    Axios.get('https://jsonplaceholder.typicode.com/todos')
-      .then(res=>{
+    Axios.post('https://jsonplaceholder.typicode.com/todos', newTodo)
+      .then(res => {
         this.setState({
-          todos : [...res.data]
+          todos: [
+            ...this.state.todos, res.data
+          ]
         })
       })
   }
