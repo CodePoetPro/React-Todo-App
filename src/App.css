@@ -355,6 +355,10 @@ h1, h2, h3, h3, h4, h5, h6 {
   margin: 0px;
 }
 
+*{
+  box-sizing: border-box;
+}
+
 header{
   display: flex;
   height: 50px;
@@ -363,7 +367,15 @@ header{
   color: white;
   align-items: center;
   padding: 0 20px;
+  justify-content: space-between;
 }
+
+
+header a{
+  color: white;
+  text-decoration: none;
+}
+
 
 
 
@@ -381,6 +393,8 @@ header{
     color: white;
     border: none;
     border-radius: 50%;
+    height: 21px;
+    width: 21px;
   }
 
   .item input[type=checkbox]{
