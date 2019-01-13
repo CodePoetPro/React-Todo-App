@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import Todos from './components/Todo';
 import './App.css'
+import Header from './components/Header';
+import Todos from './components/Todo';
+import AddTodo from './components/AddTodo';
 
 
 class App extends Component {
@@ -21,6 +23,19 @@ class App extends Component {
       todos: this.state.todos.filter((todo)=>{
         return todo.id !== id;
       })
+    })
+  }
+
+  addTodo = (title)=>{
+    let todo = {
+      id : this.state.todos.length + 1,
+      title : title,
+      completed : false
+    }
+    this.setState({
+      todos : [
+        ...this.state.todos, todo
+      ]
     })
   }
 
@@ -47,6 +62,8 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        <Header/>
+        <AddTodo addTodo={this.addTodo}/>
         <Todos toggleComplete={this.toggleComplete} deleteTodo={this.deleteTodo}  todos={this.state.todos} />
       </div>
     );
